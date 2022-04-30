@@ -159,67 +159,6 @@
 							<i class="fe-activity"></i>
 							<span> Dashboards</span></a>
 					</li>
-					<?php if (in_array(VIEW_CUSTOMERS, $permission_list)) { ?>
-						<li>
-							<a href="<?php echo base_url() ?>customers">
-								<i class="fe-user-plus"></i>
-								<span> Customers</span></a>
-						</li>
-					<?php } ?>
-					<?php if (in_array(ADD_NEWS, $permission_list) || in_array(VIEW_NEWS, $permission_list)) { ?>
-						<li>
-							<a href="#sidebarIcons3" data-toggle="collapse">
-								<i class="mdi mdi-web"></i>
-								<span> News </span>
-								<span class="menu-arrow"></span>
-							</a>
-							<div class="collapse" id="sidebarIcons3">
-								<ul class="nav-second-level">
-									<?php if (in_array(VIEW_NEWS, $permission_list)) { ?>
-										<li>
-											<a href="<?php echo base_url(); ?>news">
-												<i class="mdi mdi-web"></i>
-												<span>All News</span></a>
-										</li>
-									<?php } ?>
-									<?php if (in_array(ADD_NEWS, $permission_list)) { ?>
-										<li>
-											<a href="<?php echo base_url(); ?>news/create">
-												<i class="mdi mdi-plus"></i>
-												<span>New News</span></a>
-										</li>
-									<?php } ?>
-								</ul>
-							</div>
-						</li>
-					<?php } ?>
-					<?php if (in_array(ADD_NEWS, $permission_list) || in_array(VIEW_NEWS, $permission_list)) { ?>
-						<li>
-							<a href="#sidebarIcons4" data-toggle="collapse">
-								<i class="mdi mdi-web"></i>
-								<span> Knowledge News </span>
-								<span class="menu-arrow"></span>
-							</a>
-							<div class="collapse" id="sidebarIcons4">
-								<ul class="nav-second-level">
-									<?php if (in_array(VIEW_NEWS, $permission_list)) { ?>
-										<li>
-											<a href="<?php echo base_url(); ?>knowledge_news">
-												<i class="mdi mdi-web"></i>
-												<span>Knowledge News</span></a>
-										</li>
-									<?php } ?>
-									<?php if (in_array(ADD_NEWS, $permission_list)) { ?>
-										<li>
-											<a href="<?php echo base_url(); ?>knowledge_news/create">
-												<i class="mdi mdi-plus"></i>
-												<span>New Knowledge News</span></a>
-										</li>
-									<?php } ?>
-								</ul>
-							</div>
-						</li>
-					<?php } ?>
 					<?php if (in_array(USER_MANAGEMENT, $permission_list)) { ?>
 						<li>
 							<a href="#sidebarIcons5" data-toggle="collapse">
