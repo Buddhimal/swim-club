@@ -12,7 +12,7 @@
 		$last_url = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : "#";
 
 		if(sizeof($crumbs) == 3){
-			$crumbs[1] = "MR Consultations";
+			$crumbs[1] = "Swim Club";
 		}
 
 		foreach ($crumbs as $key => $crumb) {

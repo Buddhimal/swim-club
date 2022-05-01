@@ -43,6 +43,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 				</div>
 				<h4 class="mt-0">Welcome To Admin</h4>
 				<p class="text-muted mb-4">Enter your email address and password to access account.</p>
+				<?php $this->load->view('template/alert_message') ?>
 
 				<!-- form -->
 				<form action="<?php echo base_url() ?>auth" method="post" enctype="multipart/form-data"
@@ -89,7 +90,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 				<!-- Footer-->
 				<footer class="footer footer-alt">
-
+					<p class="text-muted">Don't have an account? <a href="<?php echo base_url() ?>register"
+																	class="text-muted ml-1"><b>Sign Up</b></a></p>
 				</footer>
 
 			</div> <!-- end .card-body -->

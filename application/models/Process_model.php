@@ -54,5 +54,23 @@ class Process_model extends CI_Model
 		return true;
 	}
 
+	public function get_new_members()
+	{
+		return $this->db
+			->select('*')
+			->from("members")
+			->where('is_verified', false)
+			->get();
+	}
+
+	public function get_member($id)
+	{
+		return $this->db
+			->select('*')
+			->from("members")
+			->where('id', $id)
+			->get()->row();
+	}
+
 
 }

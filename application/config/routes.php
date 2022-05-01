@@ -55,7 +55,10 @@ $route['default_controller'] = 'navigation';
 $route['dashboard'] = 'welcome/dashboard';
 $route['auth'] = 'welcome/check_login';
 $route['login'] = 'welcome/login';
+$route['register'] = 'welcome/register';
 $route['logout'] = 'welcome/logout';
+$route['save_user'] = 'welcome/save_user';
+$route['member/edit'] = 'navigation/edit_member';
 
 
 $route['404_override'] = '';

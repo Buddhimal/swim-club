@@ -1,6 +1,12 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+class UserRole{
+	const Admin = 1;
+	const Parent = 2;
+	const Coach = 3;
+	const Swimmer = 4;
+}
 
 class VerifyStatus
 {

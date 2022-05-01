@@ -24,6 +24,17 @@ class Navigation extends CI_Controller
 	public function index()
 	{
 		$this->load->view('template/header');
+		$data["member_list"] = $this->process_model->get_new_members();
+		$this->load->view('member/member_list', $data);
+		$this->load->view('template/footer');
+	}
+
+	public function edit_member()
+	{
+		$member_id = base64_decode($this->input->get("member_id"));
+		$this->load->view('template/header');
+		$data["member"] = $this->process_model->get_member($member_id);
+		$this->load->view('member/edit_member', $data);
 		$this->load->view('template/footer');
 	}
 
