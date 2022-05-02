@@ -79,7 +79,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 						<br>
 						<div id="login_error" class="alert alert-danger fade-in m-b-15">
 							<strong>Error!</strong>
-							Invalied Username or Password.
+							Invalid Username or Password. If you registered recently, please wait until admin approve your profile.
 							<!--								<span class="close" data-dismiss="alert">&times;</span>-->
 						</div>
 					</div>

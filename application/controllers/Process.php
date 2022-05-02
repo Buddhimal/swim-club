@@ -10,6 +10,7 @@ class Process extends CI_Controller
 		$this->load->model('user/mlogin');
 		$this->load->model('mloging');
 		$this->load->model('Process_model');
+		$this->load->model('mvalidation');
 		$this->load->model('user/muser');
 
 		if (is_login() == '') {
@@ -33,23 +34,27 @@ class Process extends CI_Controller
 		$this->session->set_flashdata('alert_type', $alert_type);
 	}
 
-	public function save_patient()
+	public function update_member()
 	{
-		$post_data = $this->input->post();
-		$post_data["updated_by"] = $this->session->userdata('user_id');
-		$post_data["updated_at"] = date("Y-m-d H:i:s");
-		$post_data["created_at"] = date("Y-m-d H:i:s");
+		$member_id = $this->input->post('member_id');
 
-		if ($this->Process_model->insert('patients', $post_data)) {
-			$this->set_flash_data("New Patient Created Successfully");
+		$result = $this->mvalidation->is_valid($this->input->post(), true);
+		if ($result["success"]) {
+			$post_data = $this->input->post();
+			unset($post_data['member_id']);
+			$post_data["updated_at"] = date("Y-m-d H:i:s");
+
+			$customer_data = $post_data;
+
+			if ($this->Process_model->update_member($customer_data, base64_decode($member_id))) {
+				redirect('/');
+			}
+
 		} else {
-			$this->set_flash_data("Failed to add new patient", "alert-danger");
 
+			$this->session->set_flashdata("errors", $result["data"]);
+			redirect('member/edit?member_id=' . $member_id);
 		}
-
-		redirect('patient');
 	}
-
-
 
 }

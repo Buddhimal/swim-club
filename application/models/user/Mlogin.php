@@ -13,11 +13,10 @@ class MLogin extends CI_Model
         if ($username == '') return false;
         if ($password == '') return false;
 
-
         $this->db->select('*');
         $this->db->where('username', $username);
         $this->db->where('status_id', '1');
-        $this->db->where('user_group_id != 2');
+        $this->db->where('is_verified', 1);
         $this->db->from('sys_user');
         $query = $this->db->get();
 
@@ -36,14 +35,7 @@ class MLogin extends CI_Model
                     'email' => $row->email,
                     'login' => TRUE);
                 $this->session->set_userdata($login_info);
-                $this->get_user_group_info();
-                $this->set_company_defaults();
-                $data = array(
-                    'timestamp' => date("m/d/Y g:i:s A"),
-                    'user_id' => $row->user_id,
-                    'ip' => $this->input->ip_address()
-                );
-                $this->db->insert('sys_user_login_history', $data);
+
 				$this->db->set(array("login_token"=>$token))->where('user_id',$row->user_id)->update('sys_user');
 
                 return true;
@@ -82,11 +74,6 @@ class MLogin extends CI_Model
                 'sys_user_group_id' => $row->sys_user_group_id);
             $this->session->set_userdata($user_group_info);
         }
-    }
-
-    private function set_company_defaults()
-    {
-        // this functon is to change the default according to the user logged in.
     }
 
     public function get_permission($module_id = 0)

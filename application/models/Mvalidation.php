@@ -11,7 +11,7 @@ class Mvalidation extends CI_Model
 		parent::__construct();
 	}
 
-	public function is_valid($data)
+	public function is_valid($data, $is_update = false)
 	{
 		$result = true;
 
@@ -22,7 +22,7 @@ class Mvalidation extends CI_Model
 			array_push($this->validation_errors, 'First Name is too long.');
 			$result = false;
 		}
-		if (!(isset($data['last_name']) && $data['last_name'] != NULL && $data['last_name'] != '' && $this->name($data['first_name']))) {
+		if (!(isset($data['last_name']) && $data['last_name'] != NULL && $data['last_name'] != '' && $this->name($data['last_name']))) {
 			array_push($this->validation_errors, 'Invalid Last Name.');
 			$result = false;
 		} else if (!(strlen($data['last_name']) <= 50)) {
@@ -33,7 +33,7 @@ class Mvalidation extends CI_Model
 		if (!(isset($data['email']) && $this->email($data['email']))) {
 			array_push($this->validation_errors, 'Invalid Email.');
 			$result = false;
-		} elseif ($this->mvalidation->already_exists('sys_user', 'email', $data['email']) == TRUE) {
+		} elseif (!$is_update && $this->mvalidation->already_exists('sys_user', 'email', $data['email']) == TRUE) {
 			array_push($this->validation_errors, 'Email already registered.');
 			$result = false;
 		}

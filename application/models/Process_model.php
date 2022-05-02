@@ -72,5 +72,14 @@ class Process_model extends CI_Model
 			->get()->row();
 	}
 
+	public function update_member($customer_data, $member_id){
+		$this->db
+			->set($customer_data)
+			->where('id', $member_id)
+			->update('members');
+
+		return true;
+	}
+
 
 }
