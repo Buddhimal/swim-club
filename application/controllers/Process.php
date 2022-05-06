@@ -57,4 +57,12 @@ class Process extends CI_Controller
 		}
 	}
 
+	public function verify_member()
+	{
+		$member_id = $this->input->get('member_id');
+		$member_id = base64_decode($member_id);
+		$this->Process_model->verify_member($member_id);
+		redirect('/');
+	}
+
 }

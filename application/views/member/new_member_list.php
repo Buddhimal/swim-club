@@ -58,8 +58,11 @@
 
 										<td>
 											<a class="btn btn-xs btn-default text-primary"
-											   href="<?php echo base_url('member/edit/detail?member_id=' . base64_encode($customer->id)) ?>">
+											   href="<?php echo base_url('member/edit?member_id=' . base64_encode($customer->id)) ?>">
 												<i class="fa fa-user-edit"></i></a>
+											<a class="btn btn-xs btn-default text-success"
+											   href="<?php echo base_url('member/verify?member_id=' . base64_encode($customer->id)) ?>">
+												<i class="fa fa-check"></i></a>
 										</td>
 									</tr>
 								<?php } ?>

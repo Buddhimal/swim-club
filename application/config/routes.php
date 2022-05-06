@@ -59,7 +59,10 @@ $route['register'] = 'welcome/register';
 $route['logout'] = 'welcome/logout';
 $route['save_user'] = 'welcome/save_user';
 $route['member/edit'] = 'navigation/edit_member';
+$route['member/edit/detail'] = 'navigation/edit_member_detail';
 $route['member/update'] = 'process/update_member';
+$route['member/verify'] = 'process/verify_member';
+$route['members'] = 'navigation/member_list';
 
 
 $route['404_override'] = '';

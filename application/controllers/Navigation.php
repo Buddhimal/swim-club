@@ -25,7 +25,7 @@ class Navigation extends CI_Controller
 	{
 		$this->load->view('template/header');
 		$data["member_list"] = $this->process_model->get_new_members();
-		$this->load->view('member/member_list', $data);
+		$this->load->view('member/new_member_list', $data);
 		$this->load->view('template/footer');
 	}
 
@@ -35,6 +35,25 @@ class Navigation extends CI_Controller
 		$this->load->view('template/header');
 		$data["member"] = $this->process_model->get_member($member_id);
 		$this->load->view('member/edit_member', $data);
+		$this->load->view('template/footer');
+	}
+
+	public function edit_member_detail()
+	{
+		$member_id = base64_decode($this->input->get("member_id"));
+		$this->load->view('template/header');
+		$data["member"] = $this->process_model->get_member($member_id);
+		$data["parents"] = $this->process_model->select_where('members', array('role' => 2, 'is_verified' => 1));
+		$data["coaches"] = $this->process_model->select_where('members', array('role' => 3, 'is_verified' => 1));
+		$this->load->view('member/edit_member_detail', $data);
+		$this->load->view('template/footer');
+	}
+
+	public function member_list()
+	{
+		$this->load->view('template/header');
+		$data["member_list"] = $this->process_model->select_all('members');
+		$this->load->view('member/member_list', $data);
 		$this->load->view('template/footer');
 	}
 

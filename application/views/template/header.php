@@ -157,7 +157,12 @@
 					<li>
 						<a href="<?php echo base_url() ?>">
 							<i class="fe-user-plus"></i>
-							<span> New Users</span></a>
+							<span> New Members</span></a>
+					</li>
+					<li>
+						<a href="<?php echo base_url() ?>members">
+							<i class="fe-users"></i>
+							<span> All Members</span></a>
 					</li>
 					<?php if (in_array(USER_MANAGEMENT, $permission_list)) { ?>
 						<li>

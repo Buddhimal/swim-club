@@ -72,11 +72,27 @@ class Process_model extends CI_Model
 			->get()->row();
 	}
 
-	public function update_member($customer_data, $member_id){
+	public function update_member($customer_data, $member_id)
+	{
 		$this->db
 			->set($customer_data)
 			->where('id', $member_id)
 			->update('members');
+
+		return true;
+	}
+
+	public function verify_member($member_id)
+	{
+		$this->db
+			->set('is_verified', 1)
+			->where('id', $member_id)
+			->update('members');
+
+		$this->db
+			->set('is_verified', 1)
+			->where('member_id', $member_id)
+			->update('sys_user');
 
 		return true;
 	}

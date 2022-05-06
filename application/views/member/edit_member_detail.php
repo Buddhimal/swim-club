@@ -93,18 +93,34 @@ $readonly = "";
 											   placeholder="Enter your Postcode" value="<?php echo $member->postcode ?>"
 											   required <?php echo $readonly ?>>
 									</div>
-									<div class="form-group">
-										<label for="fullname"> Role</label>
-										<select class="form-control" name="role" id="role"
-												required <?php echo $readonly ?>>
-											<option value="2" <?php if ($member->role == UserRole::Parent) echo "selected" ?>>Parent
-											</option>
-											<option value="3" <?php if ($member->role == UserRole::Coach) echo "selected" ?>>Coach
-											</option>
-											<option value="4" <?php if ($member->role == UserRole::Swimmer) echo "selected" ?>>Swimmer
-											</option>
-										</select>
-									</div>
+									<?php if ($member->role == UserRole::Swimmer) { ?>
+										<div class="form-group">
+											<label for="fullname"> Parent</label>
+											<select class="form-control" name="parent_id" id="parent_id"
+													required <?php echo $readonly ?>>
+												<option value=""> Select Parent</option>
+												<?php foreach ($parents->result() as $row) { ?>
+													<option value="<?php echo $row->id ?>" <?php if ($member->parent_id == $row->id) echo "selected" ?> >
+														<?php echo $row->first_name . " " . $row->last_name ?>
+													</option>
+												<?php } ?>
+
+											</select>
+										</div>
+										<div class="form-group">
+											<label for="fullname"> Coach</label>
+											<select class="form-control" name="role" id="role"
+													required <?php echo $readonly ?>>
+												<option value=""> Select Coach</option>
+												<?php foreach ($coaches->result() as $row) { ?>
+													<option value="<?php echo $row->id ?>" <?php if ($member->coach_id == $row->id) echo "selected" ?>>
+														<?php echo $row->first_name . " " . $row->last_name ?>
+													</option>
+												<?php } ?>
+
+											</select>
+										</div>
+									<?php } ?>
 
 									<div class="form-group mb-0 text-center">
 										<button class="btn btn-primary btn-block" type="submit" id="btn_register">Update

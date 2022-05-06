@@ -101,6 +101,7 @@ class Welcome extends CI_Controller
 				$user_data['status_id'] = 1;
 				$user_data['name'] = $post_data['first_name'];
 				$user_data['user_group_id'] = $post_data['role'];
+				$user_data['member_id'] = $customer_id;
 
 				if ($this->muser->addnew_sys_user($user_data)) {
 
