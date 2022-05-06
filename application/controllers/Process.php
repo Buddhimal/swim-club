@@ -65,4 +65,15 @@ class Process extends CI_Controller
 		redirect('/');
 	}
 
+	public function save_performance()
+	{
+		$post = $this->input->post();
+		$post["member_id"] = base64_decode($this->input->post('member_id'));
+
+		if ($this->Process_model->insert('performance', $post)) {
+			redirect('member/performance?member_id=' . base64_encode($post["member_id"]));
+		}
+
+	}
+
 }

@@ -20,7 +20,7 @@
 						<div class="card-body">
 							<div class="row mb-2">
 								<div class="col-sm-4">
-									<h4 class="header-title">New Members</h4>
+									<h4 class="header-title">All Members</h4>
 								</div>
 							</div>
 
@@ -60,6 +60,11 @@
 											<a class="btn btn-xs btn-default text-primary"
 											   href="<?php echo base_url('member/edit/detail?member_id=' . base64_encode($customer->id)) ?>">
 												<i class="fa fa-user-edit"></i></a>
+											<?php if ($customer->role == UserRole::Swimmer) { ?>
+												<a class="btn btn-xs btn-default text-info"
+												   href="<?php echo base_url('member/performance/add?member_id=' . base64_encode($customer->id)) ?>">
+													<i class="fa fa-plus"></i></a>
+											<?php } ?>
 										</td>
 									</tr>
 								<?php } ?>

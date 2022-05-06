@@ -62,7 +62,10 @@ $route['member/edit'] = 'navigation/edit_member';
 $route['member/edit/detail'] = 'navigation/edit_member_detail';
 $route['member/update'] = 'process/update_member';
 $route['member/verify'] = 'process/verify_member';
+$route['member/performance/save'] = 'process/save_performance';
 $route['members'] = 'navigation/member_list';
+$route['member/performance/add'] = 'navigation/add_performance';
+$route['member/performance'] = 'navigation/performance';
 
 
 $route['404_override'] = '';

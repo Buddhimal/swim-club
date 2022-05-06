@@ -82,9 +82,16 @@ class Welcome extends CI_Controller
 
 	public function save_user()
 	{
+
 		$result = $this->mvalidation->is_valid($this->input->post());
 		if ($result["success"]) {
 			$post_data = $this->input->post();
+			$post_data["first_name"] = $this->mvalidation->validate_string($post_data["first_name"]);
+			$post_data["last_name"] = $this->mvalidation->validate_string($post_data["last_name"]);
+			$post_data["address"] = $this->mvalidation->validate_string($post_data["address"]);
+			$post_data["postcode"] = $this->mvalidation->validate_string($post_data["postcode"]);
+			$post_data["role"] = $this->mvalidation->validate_string($post_data["role"]);
+			$post_data["tp"] = $this->mvalidation->validate_string($post_data["tp"]);
 			$password = $post_data['password'];
 			unset($post_data['password']);
 			$post_data["updated_at"] = date("Y-m-d H:i:s");

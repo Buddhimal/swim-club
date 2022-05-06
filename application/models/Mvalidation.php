@@ -38,6 +38,11 @@ class Mvalidation extends CI_Model
 			$result = false;
 		}
 
+		if (!(isset($data['dob']) && $this->dob($data['dob']))) {
+			array_push($this->validation_errors, 'Invalid Date of Birth.');
+			$result = false;
+		}
+
 		if (!(isset($data['tp']) && $this->telephone($data['tp']))) {
 			array_push($this->validation_errors, 'Invalid Telephone.');
 			$result = false;
@@ -60,6 +65,12 @@ class Mvalidation extends CI_Model
 	{
 		$length = strlen($tp);
 		return ($length == 10);
+	}
+
+	function dob($dob = '')
+	{
+		$age = CommonHelper::get_age($dob);
+		return !($dob >= date("Y-m-d") || $age < 1);
 	}
 
 	function already_exists($table, $column, $value)
@@ -98,6 +109,12 @@ class Mvalidation extends CI_Model
 		} else {
 			return FALSE;
 		}
+	}
+
+	public function validate_string($string = "")
+	{
+		$string = str_ireplace(array('&lt;b&gt;', '&lt;/b&gt;', '&lt;h2&gt;', '&lt;/h2&gt;'), '', htmlspecialchars(html_entity_decode($string)));
+		return (strip_tags(html_entity_decode($string)));
 	}
 
 

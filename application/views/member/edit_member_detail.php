@@ -1,7 +1,7 @@
 <?php
 $errors = $this->session->flashdata('errors');
 $errors = $errors ? $errors : [];
-$readonly = "";
+$readonly = $member->role == UserRole::Swimmer && CommonHelper::get_age($member->dob) < 18 ? "readonly" : "";
 //var_dump(($errors));
 //die();
 ?>
@@ -97,7 +97,7 @@ $readonly = "";
 										<div class="form-group">
 											<label for="fullname"> Parent</label>
 											<select class="form-control" name="parent_id" id="parent_id"
-													required <?php echo $readonly ?>>
+													 <?php echo $readonly ?>>
 												<option value=""> Select Parent</option>
 												<?php foreach ($parents->result() as $row) { ?>
 													<option value="<?php echo $row->id ?>" <?php if ($member->parent_id == $row->id) echo "selected" ?> >
@@ -109,7 +109,7 @@ $readonly = "";
 										</div>
 										<div class="form-group">
 											<label for="fullname"> Coach</label>
-											<select class="form-control" name="role" id="role"
+											<select class="form-control" name="coach_id" id="coach_id"
 													required <?php echo $readonly ?>>
 												<option value=""> Select Coach</option>
 												<?php foreach ($coaches->result() as $row) { ?>
