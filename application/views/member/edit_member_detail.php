@@ -76,6 +76,11 @@ $readonly = $member->role == UserRole::Swimmer && CommonHelper::get_age($member-
 											   required <?php echo $readonly ?>>
 									</div>
 									<div class="form-group">
+										<label for="emailaddress">Age</label>
+										<input class="form-control" type="number"
+											   placeholder="Age" value="<?php echo CommonHelper::get_age($member->dob) ?>" readonly>
+									</div>
+									<div class="form-group">
 										<label for="fullname"> Telephone</label>
 										<input class="form-control" type="number" id="tp" name="tp"
 											   placeholder="Enter your Teliphone" value="<?php echo $member->tp ?>"
@@ -97,7 +102,7 @@ $readonly = $member->role == UserRole::Swimmer && CommonHelper::get_age($member-
 										<div class="form-group">
 											<label for="fullname"> Parent</label>
 											<select class="form-control" name="parent_id" id="parent_id"
-													 <?php echo $readonly ?>>
+													<?php echo $readonly ?>>
 												<option value=""> Select Parent</option>
 												<?php foreach ($parents->result() as $row) { ?>
 													<option value="<?php echo $row->id ?>" <?php if ($member->parent_id == $row->id) echo "selected" ?> >
@@ -121,12 +126,13 @@ $readonly = $member->role == UserRole::Swimmer && CommonHelper::get_age($member-
 											</select>
 										</div>
 									<?php } ?>
-
-									<div class="form-group mb-0 text-center">
-										<button class="btn btn-primary btn-block" type="submit" id="btn_register">Update
-										</button>
-									</div>
-
+									<?php if (!$readonly) { ?>
+										<div class="form-group mb-0 text-center">
+											<button class="btn btn-primary btn-block" type="submit" id="btn_register">
+												Update
+											</button>
+										</div>
+									<?php } ?>
 								</form>
 
 							</div> <!-- end card body-->

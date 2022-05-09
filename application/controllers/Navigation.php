@@ -23,6 +23,13 @@ class Navigation extends CI_Controller
 
 	public function index()
 	{
+		$user_group_id = $this->session->userdata('user_group_id');
+		if ($user_group_id == UserRole::Swimmer) {
+			$member_id = $this->session->userdata('member_id');
+			redirect('member/edit/detail?member_id=' . base64_encode($member_id));
+		} elseif ($user_group_id != UserRole::Admin) {
+			redirect('members');
+		}
 		$this->load->view('template/header');
 		$data["member_list"] = $this->process_model->get_new_members();
 		$this->load->view('member/new_member_list', $data);
@@ -52,7 +59,15 @@ class Navigation extends CI_Controller
 	public function member_list()
 	{
 		$this->load->view('template/header');
-		$data["member_list"] = $this->process_model->select_all('members');
+		$user_group_id = $this->session->userdata('user_group_id');
+		$member_id = $this->session->userdata('member_id');
+		if ($user_group_id == UserRole::Parent) {
+			$data["member_list"] = $this->process_model->select_where('members', array('parent_id' => $member_id));
+		} elseif ($user_group_id == UserRole::Coach) {
+			$data["member_list"] = $this->process_model->select_where('members', array('coach_id' => $member_id));
+		} else {
+			$data["member_list"] = $this->process_model->select_all('members');
+		}
 		$this->load->view('member/member_list', $data);
 		$this->load->view('template/footer');
 	}

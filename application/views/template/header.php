@@ -53,6 +53,20 @@
 
 <body class="loading">
 
+<?php
+$member_id = $this->session->userdata('member_id');
+$name = $this->session->userdata('name');
+$user_group_id = $this->session->userdata('user_group_id');
+$user_group = "Admin";
+if ($user_group_id == UserRole::Coach)
+	$user_group = "Coach";
+if ($user_group_id == UserRole::Parent)
+	$user_group = "Parent";
+if ($user_group_id == UserRole::Swimmer)
+	$user_group = "Swimmer";
+
+$age = $this->session->userdata('age');
+?>
 <!-- Begin page -->
 <div id="wrapper">
 
@@ -63,9 +77,9 @@
 
 
 				<li class="dropdown d-none d-lg-inline-block">
-					<a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="fullscreen"
+					<a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="dropdown"
 					   href="#">
-						<i class="fe-maximize noti-icon"></i>
+						<i class="fe-user noti-icon" style="color: white"> <?php echo $user_group?></i>
 					</a>
 				</li>
 
@@ -89,7 +103,7 @@
 					<div class="dropdown-menu dropdown-menu-right profile-dropdown ">
 						<!-- item-->
 						<div class="dropdown-header noti-title">
-							<h6 class="text-overflow m-0">Welcome !</h6>
+							<h6 class="text-overflow m-0">Welcome <?php echo $name ?>!</h6>
 						</div>
 
 
@@ -154,44 +168,28 @@
 				<ul id="side-menu">
 
 					<li class="menu-title">Navigation</li>
-					<li>
-						<a href="<?php echo base_url() ?>">
-							<i class="fe-user-plus"></i>
-							<span> New Members</span></a>
-					</li>
-					<li>
-						<a href="<?php echo base_url() ?>members">
-							<i class="fe-users"></i>
-							<span> All Members</span></a>
-					</li>
-					<?php if (in_array(USER_MANAGEMENT, $permission_list)) { ?>
+					<?php if ($user_group_id != UserRole::Admin) { ?>
 						<li>
-							<a href="#sidebarIcons5" data-toggle="collapse">
-								<i class="mdi mdi-cog"></i>
-								<span> Administration </span>
-								<span class="menu-arrow"></span>
-							</a>
-							<div class="collapse" id="sidebarIcons5">
-								<ul class="nav-second-level">
-									<?php if (in_array(SYS_USER_LIST_VIWE, $permission_list)) { ?>
-										<li>
-											<a href="<?php echo base_url(); ?>user/user">
-												<i class="fe-user"></i>
-												<span>Users</span></a>
-										</li>
-									<?php } ?>
-									<?php if (in_array(SYS_USER_GROUP, $permission_list)) { ?>
-										<li>
-											<a href="<?php echo base_url(); ?>user/user/user_group_list">
-												<i class="fe-users"></i>
-												<span>User Groups</span></a>
-										</li>
-									<?php } ?>
-
-								</ul>
-							</div>
+							<a href="<?php echo base_url() ?>member/edit/detail?member_id=<?php echo base64_encode($member_id) ?>">
+								<i class="fe-user"></i>
+								<span> My Profile</span></a>
 						</li>
 					<?php } ?>
+					<?php if ($user_group_id == UserRole::Admin) { ?>
+						<li>
+							<a href="<?php echo base_url() ?>">
+								<i class="fe-user-plus"></i>
+								<span> New Members</span></a>
+						</li>
+					<?php } ?>
+					<?php if ($user_group_id != UserRole::Swimmer) { ?>
+						<li>
+							<a href="<?php echo base_url() ?>members">
+								<i class="fe-users"></i>
+								<span> My Members</span></a>
+						</li>
+					<?php } ?>
+
 
 				</ul>
 
