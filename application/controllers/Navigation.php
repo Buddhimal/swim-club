@@ -79,6 +79,22 @@ class Navigation extends CI_Controller
 		$this->load->view('template/footer');
 	}
 
+	public function performance_list()
+	{
+		$this->load->view('template/header');
+		$performance_details = $this->process_model->get_member_performance();
+		$data["performance_details"] = $performance_details;
+		$this->load->view('member/member_performance_list', $data);
+		$this->load->view('template/footer');
+	}
+
+	public function races()
+	{
+		$this->load->view('template/header');
+		$this->load->view('member/add_performance');
+		$this->load->view('template/footer');
+	}
+
 	public function performance()
 	{
 		$member_id = base64_decode($this->input->get('member_id'));

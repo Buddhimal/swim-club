@@ -66,6 +66,8 @@ $route['member/performance/save'] = 'process/save_performance';
 $route['members'] = 'navigation/member_list';
 $route['member/performance/add'] = 'navigation/add_performance';
 $route['member/performance'] = 'navigation/performance';
+$route['races'] = 'navigation/races';
+$route['performance'] = 'navigation/performance_list';
 
 
 $route['404_override'] = '';

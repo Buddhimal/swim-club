@@ -97,5 +97,21 @@ class Process_model extends CI_Model
 		return true;
 	}
 
+	public function get_member_performance(){
+		return $this->db->query('SELECT
+							p.record_type,
+							p.swimming_type,
+							p.date,
+							p.duration,
+							CONCAT(m.first_name," ", m.last_name) as member_name,
+							m.coach_id,
+							CONCAT(c.first_name," ", c.last_name) as coach_name
+						FROM
+							performance AS p
+							INNER JOIN members AS m ON p.member_id = m.id
+							LEFT JOIN members AS c ON m.coach_id = c.id'
+		);
+	}
+
 
 }

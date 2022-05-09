@@ -189,6 +189,16 @@ $age = $this->session->userdata('age');
 								<span> My Members</span></a>
 						</li>
 					<?php } ?>
+					<li>
+						<a href="<?php echo base_url() ?>races">
+							<i class="fe-truck"></i>
+							<span> Races</span></a>
+					</li>
+					<li>
+						<a href="<?php echo base_url() ?>performance">
+							<i class="fe-settings"></i>
+							<span> Performance</span></a>
+					</li>
 
 
 				</ul>
