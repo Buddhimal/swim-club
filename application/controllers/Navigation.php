@@ -88,10 +88,34 @@ class Navigation extends CI_Controller
 		$this->load->view('template/footer');
 	}
 
+	public function add_race()
+	{
+		$this->load->view('template/header');
+		$this->load->view('member/add_race');
+		$this->load->view('template/footer');
+	}
+
 	public function races()
 	{
 		$this->load->view('template/header');
-		$this->load->view('member/add_performance');
+		$data["race_list"] = $this->process_model->select_all('race');
+		$this->load->view('member/race_list', $data);
+		$this->load->view('template/footer');
+	}
+
+	public function add_race_performance()
+	{
+		$this->load->view('template/header');
+		$data["swimmers"] = $this->process_model->select_where('members', array('role' => UserRole::Swimmer));
+		$this->load->view('member/add_race_performance', $data);
+		$this->load->view('template/footer');
+	}
+
+	public function view_race_performance()
+	{
+		$this->load->view('template/header');
+		$data["performance"] = $this->process_model->get_race_performance();
+		$this->load->view('member/race_performance_list', $data);
 		$this->load->view('template/footer');
 	}
 

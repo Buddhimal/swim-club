@@ -112,6 +112,22 @@ class Process_model extends CI_Model
 							LEFT JOIN members AS c ON m.coach_id = c.id'
 		);
 	}
+	public function get_race_performance(){
+		return $this->db->query("SELECT
+									race.race_type,
+									race.date,
+									race.location,
+									race_performance.duration,
+									race_performance.position,
+									race_performance.notes,
+									members.first_name,
+									members.last_name 
+								FROM
+									race
+									INNER JOIN race_performance ON race.id = race_performance.race_id
+									INNER JOIN members ON race_performance.swimmer_id = members.id"
+		);
+	}
 
 
 }

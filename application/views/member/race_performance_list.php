@@ -9,7 +9,7 @@
 				<div class="col-12">
 					<div class="page-title-box">
 						<?php $this->load->view('template/breadcrumb') ?>
-						<h4 class="page-title">Performance List</h4>
+						<h4 class="page-title">Race Performance</h4>
 					</div>
 				</div>
 			</div>
@@ -20,7 +20,7 @@
 						<div class="card-body">
 							<div class="row mb-2">
 								<div class="col-sm-4">
-									<h4 class="header-title">All Performance</h4>
+									<h4 class="header-title"><?php echo $performance->row()->race_type .' on '. $performance->row()->date.' at '. $performance->row()->location ?></h4>
 								</div>
 							</div>
 
@@ -29,22 +29,21 @@
 							<table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
 								<thead>
 								<tr>
-									<th>Race</th>
-									<th>Record Type</th>
-									<th>Swimming Type</th>
+									<th>Swimmer</th>
 									<th>Duration</th>
-									<th>Date</th>
+									<th>Position</th>
+									<th>Notes</th>
+<!--									<th>Date</th>-->
 								</tr>
 								</thead>
 
 								<tbody>
-								<?php foreach ($performance_details->result() as $row) { ?>
+								<?php foreach ($performance->result() as $row) { ?>
 									<tr>
-										<td></td>
-										<td><?php echo $row->record_type ?></td>
-										<td><?php echo $row->swimming_type ?></td>
+										<td><?php echo $row->first_name .' '. $row->last_name ?></td>
 										<td><?php echo $row->duration ?></td>
-										<td><?php echo $row->date ?></td>
+										<td><?php echo $row->position ?></td>
+										<td><?php echo $row->notes ?></td>
 									</tr>
 								<?php } ?>
 

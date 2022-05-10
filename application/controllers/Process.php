@@ -76,4 +76,25 @@ class Process extends CI_Controller
 
 	}
 
+	public function save_race_performance()
+	{
+		$post = $this->input->post();
+		$post["race_id"] = base64_decode($this->input->post('race_id'));
+
+		if ($this->Process_model->insert('race_performance', $post)) {
+			redirect('race/performance/add');
+		}
+
+	}
+
+	public function save_race()
+	{
+		$post = $this->input->post();
+
+		if ($this->Process_model->insert('race', $post)) {
+			redirect('races');
+		}
+
+	}
+
 }

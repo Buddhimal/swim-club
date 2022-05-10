@@ -197,7 +197,7 @@ $age = $this->session->userdata('age');
 					<li>
 						<a href="<?php echo base_url() ?>performance">
 							<i class="fe-settings"></i>
-							<span> Performance</span></a>
+							<span> Training Performance</span></a>
 					</li>
 
 

@@ -18,18 +18,18 @@ $readonly = "";
 				<div class="col-12">
 					<div class="page-title-box">
 						<?php $this->load->view('template/breadcrumb') ?>
-						<h4 class="page-title">Add Performance</h4>
+						<h4 class="page-title">Add New Race</h4>
 					</div>
 				</div>
 			</div>
 			<!-- end page title -->
 			<div class="row">
-				<div class="col-12">
+				<div class="col-6">
 					<div class="card">
 						<div class="card-body">
 							<div class="row mb-2">
 								<div class="col-sm-4">
-									<h4 class="header-title">Add Performance</h4>
+									<h4 class="header-title">Add Race</h4>
 								</div>
 							</div>
 							<div class="card" id="register_error"
@@ -46,37 +46,29 @@ $readonly = "";
 
 								</div> <!-- end card-body -->
 							</div> <!-- end card-->
-							<form action="<?php echo base_url() ?>member/performance/save" id="register_form"
+							<form action="<?php echo base_url() ?>race/save" id="register_form"
 								  method="post">
-								<input type="hidden" id="member_id" name="member_id"
-									   value="<?php echo $this->input->get('member_id') ?>">
 								<div class="form-group">
-									<label for="fullname">Record Type</label>
-									<select class="form-control" name="record_type" id="record_type" required>
-										<option>Training Performance</option>
-<!--										<option>Race Performance</option>-->
-									</select>
-								</div>
-								<div class="form-group">
-									<label for="fullname">Swimming Type</label>
-									<select class="form-control" name="swimming_type" id="swimming_type" required>
+									<label for="fullname">Race Type</label>
+									<select class="form-control" name="race_type" id="swimming_type" required>
 										<option>Free Style</option>
 										<option>Backwards</option>
 										<option>Butterfly</option>
 									</select>
 								</div>
 								<div class="form-group">
-									<label for="emailaddress">Duration</label>
-									<input class="form-control html-duration-picker" id="duration" name="duration" style="text-align: left">
-								</div>
-								<div class="form-group">
 									<label for="emailaddress">Date</label>
 									<input class="form-control" type="date" id="date" name="date"
 										   required>
 								</div>
+								<div class="form-group">
+									<label for="emailaddress">Location</label>
+									<input class="form-control" type="text" id="location" name="location"
+										   required>
+								</div>
 
 								<div class="form-group mb-0 text-center">
-									<button class="btn btn-primary btn-block" type="submit" id="btn_register">Update
+									<button class="btn btn-primary btn-block" type="submit" id="btn_register">Save
 									</button>
 								</div>
 

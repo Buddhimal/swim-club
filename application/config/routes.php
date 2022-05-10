@@ -66,8 +66,13 @@ $route['member/performance/save'] = 'process/save_performance';
 $route['members'] = 'navigation/member_list';
 $route['member/performance/add'] = 'navigation/add_performance';
 $route['member/performance'] = 'navigation/performance';
-$route['races'] = 'navigation/races';
 $route['performance'] = 'navigation/performance_list';
+$route['races'] = 'navigation/races';
+$route['race/add'] = 'navigation/add_race';
+$route['race/save'] = 'process/save_race';
+$route['race/performance/add'] = 'navigation/add_race_performance';
+$route['race/performance/save'] = 'process/save_race_performance';
+$route['race/performance/list'] = 'navigation/view_race_performance';
 
 
 $route['404_override'] = '';

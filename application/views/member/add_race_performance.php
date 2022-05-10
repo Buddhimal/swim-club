@@ -18,7 +18,7 @@ $readonly = "";
 				<div class="col-12">
 					<div class="page-title-box">
 						<?php $this->load->view('template/breadcrumb') ?>
-						<h4 class="page-title">Add Performance</h4>
+						<h4 class="page-title">Add Race Performance</h4>
 					</div>
 				</div>
 			</div>
@@ -29,7 +29,7 @@ $readonly = "";
 						<div class="card-body">
 							<div class="row mb-2">
 								<div class="col-sm-4">
-									<h4 class="header-title">Add Performance</h4>
+									<h4 class="header-title">Add Race Performance</h4>
 								</div>
 							</div>
 							<div class="card" id="register_error"
@@ -46,37 +46,36 @@ $readonly = "";
 
 								</div> <!-- end card-body -->
 							</div> <!-- end card-->
-							<form action="<?php echo base_url() ?>member/performance/save" id="register_form"
+							<form action="<?php echo base_url() ?>race/performance/save" id="register_form"
 								  method="post">
-								<input type="hidden" id="member_id" name="member_id"
-									   value="<?php echo $this->input->get('member_id') ?>">
+								<input type="hidden" id="race_id" name="race_id"
+									   value="<?php echo $this->input->get('race_id') ?>">
+
 								<div class="form-group">
-									<label for="fullname">Record Type</label>
-									<select class="form-control" name="record_type" id="record_type" required>
-										<option>Training Performance</option>
-<!--										<option>Race Performance</option>-->
-									</select>
-								</div>
-								<div class="form-group">
-									<label for="fullname">Swimming Type</label>
-									<select class="form-control" name="swimming_type" id="swimming_type" required>
-										<option>Free Style</option>
-										<option>Backwards</option>
-										<option>Butterfly</option>
+									<label for="fullname">Swimmer</label>
+									<select class="form-control" name="swimmer_id" id="swimmer_id" required>
+										<?php foreach ($swimmers->result() as $row) { ?>
+											<option value="<?php echo $row->id ?>"><?php echo $row->first_name . ' ' . $row->last_name ?></option>
+										<?php } ?>
 									</select>
 								</div>
 								<div class="form-group">
 									<label for="emailaddress">Duration</label>
-									<input class="form-control html-duration-picker" id="duration" name="duration" style="text-align: left">
+									<input class="form-control html-duration-picker" id="duration" name="duration"
+										   style="text-align: left">
 								</div>
 								<div class="form-group">
-									<label for="emailaddress">Date</label>
-									<input class="form-control" type="date" id="date" name="date"
-										   required>
+									<label for="emailaddress">Position</label>
+									<input class="form-control" id="position" name="position" type="number">
+								</div>
+								<div class="form-group">
+									<label for="emailaddress">Notes</label>
+									<input class="form-control" type="text" id="notes" name="notes"
+									>
 								</div>
 
 								<div class="form-group mb-0 text-center">
-									<button class="btn btn-primary btn-block" type="submit" id="btn_register">Update
+									<button class="btn btn-primary btn-block" type="submit" id="btn_register">Save
 									</button>
 								</div>
 
