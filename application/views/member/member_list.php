@@ -1,3 +1,6 @@
+<?php
+$user_group_id = $this->session->userdata('user_group_id');
+?>
 <div class="content-page">
 	<div class="content">
 
@@ -60,10 +63,12 @@
 											<a class="btn btn-xs btn-default text-primary"
 											   href="<?php echo base_url('member/edit/detail?member_id=' . base64_encode($customer->id)) ?>">
 												<i class="fa fa-user-edit"></i></a>
-											<?php if ($customer->role == UserRole::Swimmer) { ?>
-												<a class="btn btn-xs btn-default text-info"
-												   href="<?php echo base_url('member/performance/add?member_id=' . base64_encode($customer->id)) ?>">
-													<i class="fa fa-plus"></i></a>
+											<?php if ($user_group_id == UserRole::Admin || $user_group_id == UserRole::Coach) { ?>
+												<?php if ($customer->role == UserRole::Swimmer) { ?>
+													<a class="btn btn-xs btn-default text-info"
+													   href="<?php echo base_url('member/performance/add?member_id=' . base64_encode($customer->id)) ?>">
+														<i class="fa fa-plus"></i></a>
+												<?php } ?>
 											<?php } ?>
 										</td>
 									</tr>

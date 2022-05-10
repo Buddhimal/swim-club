@@ -1,3 +1,6 @@
+<?php
+$user_group_id = $this->session->userdata('user_group_id');
+?>
 <div class="content-page">
 	<div class="content">
 
@@ -18,7 +21,10 @@
 				<div class="col-12">
 					<div class="card">
 						<div class="card-body">
-							<a href="<?php echo base_url()?>race/add" class="btn btn-primary"> Add Race</a>
+							<?php if ($user_group_id == UserRole::Admin || $user_group_id == UserRole::Coach) { ?>
+								<a href="<?php echo base_url() ?>race/add" class="btn btn-primary"> Add Race</a>
+							<?php } ?>
+
 							<br>
 							<br>
 							<div class="row mb-2">
@@ -31,12 +37,12 @@
 							<?php $this->load->view('template/alert_message') ?>
 							<table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
 								<thead>
-									<tr>
-										<th>Race Type</th>
-										<th>Date</th>
-										<th>Location</th>
-										<th>Action</th>
-									</tr>
+								<tr>
+									<th>Race Type</th>
+									<th>Date</th>
+									<th>Location</th>
+									<th>Action</th>
+								</tr>
 								</thead>
 
 								<tbody>
@@ -46,9 +52,11 @@
 										<td><?php echo $row->date ?></td>
 										<td><?php echo $row->location ?></td>
 										<td>
-											<a class="btn btn-xs btn-default text-info" title="Add Performance"
-											   href="<?php echo base_url('race/performance/add?race_id=' . base64_encode($row->id)) ?>">
-												<i class="fa fa-plus"></i></a>
+											<?php if ($user_group_id == UserRole::Admin || $user_group_id == UserRole::Coach) { ?>
+												<a class="btn btn-xs btn-default text-info" title="Add Performance"
+												   href="<?php echo base_url('race/performance/add?race_id=' . base64_encode($row->id)) ?>">
+													<i class="fa fa-plus"></i></a>
+											<?php } ?>
 											<a class="btn btn-xs btn-default text-success" title="View Performance"
 											   href="<?php echo base_url('race/performance/list?race_id=' . base64_encode($row->id)) ?>">
 												<i class="fa fa-th-list"></i></a>
