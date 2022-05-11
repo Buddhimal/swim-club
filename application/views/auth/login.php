@@ -41,7 +41,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 				<div class="row">
 					<img src="<?php echo base_url(); ?>/assets/images/logointsq.png" alt="" height="150">
 				</div>
-				<h4 class="mt-0">Welcome To Admin</h4>
+				<h4 class="mt-0">Welcome to College Road Swimming Club</h4>
 				<p class="text-muted mb-4">Enter your email address and password to access account.</p>
 				<?php $this->load->view('template/alert_message') ?>
 
@@ -49,7 +49,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 				<form action="<?php echo base_url() ?>auth" method="post" enctype="multipart/form-data"
 					  id="loginform">
 					<div class="form-group">
-						<label for="emailaddress">Email address</label>
+						<label for="emailaddress">Username</label>
 						<input class="form-control" id="username" name="username" type="text" required=""
 							   placeholder="Enter your username">
 					</div>
@@ -100,10 +100,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 	<!-- end auth-fluid-form-box-->
 
 	<!-- Auth fluid right content -->
-	<div class="auth-fluid-right text-center"
-		 style="background: url(<?php echo base_url(); ?>/assets/images/sqbg.jpg) no-repeat;Background-size:cover;">
-		<div class="auth-user-testimonial">
-
+	<div class="auth-fluid-right text-center" style="background: url(<?php echo base_url(); ?>/assets/images/login-image.png) no-repeat;Background-size:cover;">
+		<div class="auth-user-testimonial" style="background-color: #0a0a0a; opacity: 0.6">
+			<h2 class="mb-3 text-white">Welcome to College Road Swimming Club!</h2>
+			<p class="lead">
+				Founded in 2022 and based in Stoke on trent, Staffordshire, we have a long history of helping swimmers to achieve county, regional , national levels and beyond.   We run four ‘squads’ (Junior, Development,  Regional & National). Swim programmes are prepared and delivered by our wonderful coaching team in our excellent facilities.
+			</p>
 		</div> <!-- end auth-user-testimonial-->
 	</div>
 </div>
